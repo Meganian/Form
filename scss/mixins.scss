@@ -1,0 +1,43 @@
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin border-radiuses($topLeft, $topRight, $bottomRight, $bottomLeft) {
+  -webkit-border-radiuses: $topLeft $topRight $bottomRight $bottomLeft;
+     -moz-border-radiuses: $topLeft $topRight $bottomRight $bottomLeft;
+          border-radiuses: $topLeft $topRight $bottomRight $bottomLeft;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+      -webkit-box-shadow: inset $top $left $blur $color;
+         -moz-box-shadow: inset $top $left $blur $color;
+              box-shadow: inset $top $left $blur $color;
+  } @else {
+      -webkit-box-shadow: $top $left $blur $color;
+         -moz-box-shadow: $top $left $blur $color;
+              box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin box-sizing ($type: border-box) {
+  -webkit-box-sizing: $type;
+     -moz-box-sizing: $type;
+          box-sizing: $type;
+}
+
+@mixin gradient($from, $to) {
+  background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+  background: -moz-linear-gradient($top,  $from, $to);
+}
+
+@mixin rotate ($rotate) {
+  -webkit-transform: rotate($rotate);
+     -moz-transform: rotate($rotate);
+       -o-transform: rotate($rotate);
+          transform: rotate($rotate);
+}

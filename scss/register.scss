@@ -1,0 +1,298 @@
+@import "breakpoints.scss";
+@import "variables.scss";
+@import "mixins.scss";
+/*@import "text-shadow.scss";*/
+
+/*-------------------global-classes-----------------*/
+
+.btn {
+    padding: 10px 35px;
+    background-color: lighten($blueColor, 10%);
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    &:hover,
+    &:focus {
+        background-color: $blueColor;
+    }
+}
+
+
+.toolTip-info {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    width: 8px;
+    height: 22px;
+    position: absolute;
+    padding: 6px 13px;
+    color: #ffffff;
+    background-color: #89bde5;
+    border-radius: 24px;
+    &:hover, &:focus {
+        background-color: $blueColor;
+    }
+}
+.toolTip-info:hover .toolTip {
+    display: inline-block;
+}
+.tooltip::before {
+    content: attr(data-tooltip);
+    bottom:60px;
+    position: absolute;
+    left:50%;
+    font-size:13px;
+    text-align: center;
+    display:inline-block;
+    padding:15px 10px;
+    color:#fff;
+    background:$blueColor;
+    width:200px;
+    border-radius:3px;
+    transform:translate(-50%, 0);
+    opacity:0;
+    visibility:hidden;
+    transition:0.4s opacity;
+    -webkit-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.34);
+       -moz-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.34);
+            box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.34);
+}
+.tooltip::after {
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top-color: $blueColor;
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    transform: translate(-50%, 0);
+    content:'';
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s opacity;
+}
+.tooltip:hover::before {
+    visibility: visible;
+    opacity: 1;
+}
+.tooltip:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+input[type="text"],
+input[type="number"] ,
+input[type="email"], 
+input[type="password"],
+.birth-day {
+    height: 32px;
+    margin: 0 0 5px;
+    line-height: 32px;
+    padding: 0 8px;
+    border: solid 1px #d3d7f7;
+    border-radius: 5px;
+    color: $blueColor;
+    font-size: 14px; }
+
+input::-webkit-input-placeholder {
+    color: $blueColor !important; }
+input:-moz-placeholder {
+    color: $blueColor !important; }
+input::-moz-placeholder {
+    color: $blueColor !important; }
+input:-ms-input-placeholder {
+    color: $blueColor !important; }
+
+input[type="submit"] {
+    color: $blueColor;
+    border-radius: 5px;
+    border: #e4e6fb solid 1px;
+    display: block;
+    text-align: center;
+    padding: 8px 0;
+    line-height: 1em;
+    width: 100%; }
+
+input[type="text"],
+input[type="password"] {
+    font-size: 14px;
+    border-radius: 5px;
+    height: auto;
+    padding: 4px;
+    margin: 0 0 10px;
+}
+
+input[type="submit"] {
+    padding: 10px 0;
+    margin: 50px 0 10px;
+    width: 70%;
+
+}
+.name input {
+    width: 35.8% !important;
+    display: inline-block;
+}
+
+
+.err-form {
+    border-color: $redColor;
+    background: right center url('img/err.png') no-repeat;
+    background-size: contain;
+}
+.err-form-span {
+    border-color: $redColor;
+    background: right center url('img/err.png') no-repeat;
+    background-size: contain;
+    padding: 16px;
+    margin-right: 6px;
+}
+.has-error {
+    border-color: $redColor;
+}
+
+
+/*--------------------content-----------------*/
+.body-content {
+    padding: 80px 16% 40px;
+    @include respond-to(XLarge){
+        padding: 80px 23% 40px ;
+    }
+}
+
+.register-info {
+    clear: right;
+    width: 100%;
+    padding: 0 50px 0 0;
+    color: $blueColor;
+    float: left;
+    display: inline-block;
+    @include respond-to(Medium){
+        width: 33% ;
+    }
+    img {
+        display: none;
+        @include respond-to(Medium) {
+            display: block;
+            position: fixed;
+            padding-top: 35px;
+        }
+        @include respond-to(XXLarge) {
+            top: 45%;
+            left: 20%;
+        }
+    }
+    li {
+        list-style: circle;
+        padding: 10px 0;
+    }
+}
+
+.register-header {
+    width: 100%;
+    padding: 20px 0 40px;
+    color: $blueColor;
+    float:right;
+    @include respond-to(Medium){
+        width: 33%;
+    }
+}
+
+.register-form {
+    clear: left;
+    width: 100%;
+    padding: 0 0 0 50px;
+    @include box-sizing(border-box);
+    display: inline-block;
+    border-left: 1px solid #e6e6e6;
+    @include respond-to(Medium) {
+        width: 60%;
+    }
+    fieldset {
+        border: 0;
+        h5 {
+            font-size: 13px;
+        }
+        label {
+            display: inline-block;
+        }
+    }
+    input, select {
+        padding: 2px 12px;
+        font-size: 14px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        box-shadow: inset 0 1px 1px rgba(255,255,255, 0.075);
+        transition: border-color ease-in-out 1.15s, box-shadow ease-in-out .15s;
+        &:focus {
+            border-color: $blueColor;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
+    }
+    .txt {
+        display: inline-block;
+        width: 80%;
+    }
+    .birth-day {
+        width: 26%;
+        padding: 0 1%;
+    }
+    .register-question {
+        padding: 50px 0 20px;
+        border-bottom: 1px solid #e6e6e6;
+        width: 80%;
+        color: $blueColor;
+        h3 {
+            width: 100%;
+            font-size: 32px;
+            display: inline-block;
+        }
+        h5 {
+            padding: 10px 0;
+        }
+        label {
+            padding-right: 10px;
+        }
+        .answer {
+            display: none;
+        }
+        .input-hobbies {
+            margin: 5px;
+        }
+        .input-movies {
+            display: none;
+            margin: 5px;
+        }
+        .box {
+            text-transform: uppercase;
+            span {
+                border: 1px solid $blueColor;
+                color: $blueColor;
+                margin: 5px 5px;
+                padding: 0 16px;
+                border-radius: 5px;
+            }
+            .checked {
+                background-color: #bf483f;
+                color: $white;
+                border: #bf483f;
+
+            }
+        }
+    }
+    .pet input[type="checkbox"],
+    .hobbies input[type="checkbox"],
+    .answer,
+    .job,
+    .movie input[type="checkbox"],
+    .student {
+        display: none;
+    }
+}
+
+
+
+
+
+
+

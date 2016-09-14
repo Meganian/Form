@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> Sign up </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link href="css/register.css" rel="stylesheet"> 
+       <!-- <link href="css/app.css" rel="stylesheet"> -->
+
+    </head>
+    <body>
+<div class="body-content">
+    <div class="pages">
+        <div id="first-page">
+            <div class="register-info">
+                <h2>Welcome to MyPage</h2>
+                <ul>
+                    <li>I know that questionnaires are boring, but the answers you give will be directly connected to the options available on your profile. Why, you might ask? This is how we create combinations in various MyPage areas. We aim to give you the best quality possible and your answers will help us to make it happen.</li>
+                    <li>Your account will offer you loads of services, features and curiosities to explore you haven’t seen before in social media. Hold on to your seat, our city of stars waits right around the corner.</li>
+                </ul>
+            </div>
+
+            <div class="register-header">
+                <h1>Sign Up</h1>
+            </div>
+
+            <div class="register-form">
+                <form method="post" id="reg" name="reg">
+                    <div id="first-step">
+                        <fieldset class="name">
+                            <input type="text" placeholder="First name" class="txt"  name="first_name"  id="first_name" pattern="[a-zA-Z0-9]+"  minlength=3 maxlength=15 autofocus="autofocus">
+                            <input type="text" placeholder="Last name" class="txt"  name="last_name"  id="last_name" minlength=3 maxlength=15><div class="toolTip-info tooltip" data-tooltip="It’s really important for you to give us your real name. MyPage’s priority is to protect our users.">?</div>
+                        </fieldset>
+                        <fieldset >
+                            <input type="number" name="phone"  id="phone" minlength=7 maxlength=12 placeholder="Mobile" class="txt"><div class="toolTip-info tooltip" data-tooltip="Your telephone number will be helpful in various MyPage services, such as contacting you directly in case of any emergencies.">?</div>
+                        </fieldset>
+                        <fieldset >
+                            <input type="email" name="email" id="email" placeholder="E-mail" class="txt" >
+                        </fieldset>
+                        <fieldset >
+                            <div class="control-group">
+                                <label for="dob-day" class="control-label">Date of birth</label>
+                                <div class="controls">
+                                    <select name="birth_day" id="birth_day" class="txt birth-day">
+                                        <option value="">Day</option>
+                                        <option value="">---</option>
+                                        {for $day=1 to 31 step 1}
+                                            <option value="{$day}">{$day}</option>
+                                        {/for}
+                                    </select>
+                                    <select name="birth_month" id="birth_month" class="txt birth-day">
+                                        <option value="">Month</option>
+                                        <option value="">-----</option>
+                                        <option value="1">January</option>
+                                        <option value="2">February</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6">June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">August</option>
+                                        <option value="9">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                    <select name="birth_year" id="birth_year" class="txt birth-day">
+                                        <option value="">Year</option>
+                                        <option value="">----</option>
+                                        {for $year=$current_year-14 to 1900 step -1}
+                                            <option value="{$year}">{$year}</option>
+                                        {/for}
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset >
+                            <address>
+                                <input type="text" placeholder="Street" name="street" id="street" class="txt"><div class="toolTip-info tooltip" data-tooltip="Many of your services will be available to you if you fill it in.">?</div>
+                                <input type="text" placeholder="Postcode" name="postcode" id="postcode"class="txt">
+                                <input type="text" placeholder="City" name="city" id="city" class="txt">
+                                <input type="text" placeholder="Country" name="country" id="country" class="txt">
+                            </address>
+                        </fieldset>
+                        <fieldset>
+                            <input type="password" placeholder="Password" name="password1" id="password1" class="txt" >
+                        </fieldset>
+                        <fieldset>
+                            <input type="password" placeholder="Re-password" name="password2" id="password2" class="txt" >
+                        </fieldset>
+                        <fieldset class="register-question" id="gender">
+                            <h3>Please enter your gender</h3><div class="toolTip-info tooltip" data-tooltip="We’re asking simply because it’s the basis for your unique MyPage account.">?</div>
+                            <label for="female"><input type="radio" name="gender" id="female">Female</label>
+                            <label for="male"><input type="radio" name="gender" id="male">Male</label>
+                        </fieldset>
+                        <fieldset class="register-question student" id="is_student">
+                            <h3>Are you a student?</h3><div class="toolTip-info tooltip" data-tooltip="Student life is full of exciting opportunities! With MyPage You will find your perfect accommodation, the right and trustworthy roommate and you will enjoy the latest updates on restaurants, clubs, activities and events.">?</div>
+                            <label for="student-yes"><input type="radio" name="is_student" id="student-yes" value="t">Yes</label>
+                            <label for="student-no"><input type="radio" name="is_student" id="student-no" value="f">No</label>
+                        </fieldset>
+                        <fieldset class="register-question pet" id="has_pet">
+                            <h3>Do you have a pet?</h3>
+                            <label for="pet-yes" value="t"><input type="radio" name="has_pet" id="pet-yes">Yes</label>
+                            <label for="pet-no" value="f"><input type="radio" name="has_pet" id="pet-no">No</label>
+
+                            <div class="answer pet-yes">
+
+                                {foreach from=$available_pets item=pet}
+                                    <label class="box">
+                                        <input type="checkbox" value="{t($pet.name)|ucfirst}" name="pet_kind"/>
+                                        <span>{t($pet.name)|ucfirst}</span>
+                                    </label>
+                                {/foreach}
+
+                            </div>
+                        </fieldset>
+                        <fieldset class="register-question" id="has_moto">
+                            <h3>Do you have a car?</h3><div class="toolTip-info tooltip" data-tooltip="Want to travel around the world? Had an accident? We’re happy to deliver emergency services as quickly as possible.">?</div>
+
+                            <label for="car" value="t"><input type="radio" name="has_moto" id="car" value="yes">Car</label>
+                            <label for="no" value="f"><input type="radio" name="has_moto" id="no" value="no">No</label>
+
+                            <div class="answer car"><input type="text" name="moto_brand" placeholder="Type in your car brand" /></div>
+
+                        </fieldset>
+                    </div>
+                </form>
+                <form action="" id="reg-second" name="reg">
+                    <div id="second-step">
+                        <fieldset class="register-question job" id="has_job">
+                            <h3>Do you have a job?</h3><div class="toolTip-info tooltip" data-tooltip="MyPage connects with companies and allows opportunities to happen. Create your CV with us, get tips on job interviews and simply go on to do great things.">?</div>
+                            <input type="radio" name="job" id="job-yes" value="t"><label for="job-yes" value="yes">Yes</label>
+                            <input type="radio" name="job" id="job-no" value="f"><label for="job-no" value="no">No</label>
+
+                            <div class="answer job-yes">
+                                <h3>Are you looking for a job? </h3>
+                                <label for="job-looking-yes"><input type="radio" name="job-looking" id="job-looking-yes" value="t">Yes</label>
+                                <label for="job-looking-no"><input type="radio" name="job-looking" id="job-looking-no" value="f">No</label>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="register-question hobbies" id="hobbies">
+                            <h3>What are your hobbies?</h3><div class="toolTip-info tooltip" data-tooltip="What do you fancy? Films? Celebrities? Cooking? Chess? Whatever you do, you can do it better with MyPage. Realize your passions and share them with friends.">?</div>
+                            <label class="box">
+                                <input type="checkbox" name="hobbies"/>
+                                <span>Traveling</span>
+                            </label>
+                            <label class="box">
+                                <input type="checkbox" name="hobbies"/>
+                                <span>Disco</span>
+                            </label>
+                            <label class="box">
+                                <input type="checkbox" name="hobbies"/>
+                                <span>Photography</span>
+                            </label>
+                            <label class="box">
+                                <input type="checkbox" name="hobbies"/>
+                                <span>Gardening</span>
+                            </label>
+                            <label class="box">
+                                <input type="checkbox" name="hobbies"/>
+                                <span>Drawing</span>
+                            </label>
+                        </fieldset>
+
+                        <fieldset class="register-question" id="movies">
+                            <h3>Do you like movies?</h3><div class="toolTip-info tooltip" data-tooltip="We love movies, because we love dreams. MyPage helps you make them come true. Find out about the latest events in the world of movies.">?</div>
+
+                            <label for="movies-yes"><input type="radio" name="movies" id="movies-yes" value="t">Yes</label>
+                            <label for="movies-no"><input type="radio" name="movies" id="movies-no" value="f">No</label>
+                            <div class="answer movies-yes">
+                                <label class="box movie">
+                                    <input type="checkbox" name="movies"/>
+                                    <span class="kind-movies">Action</span>
+                                </label>
+                                <label class="box movie">
+                                    <input type="checkbox" name="movies"/>
+                                    <span class="kind-movies">Comedy</span>
+                                </label>
+                                <label class="box movie">
+                                    <input type="checkbox" name="movies"/>
+                                    <span class="kind-movies">Horrors</span>
+                                </label>
+                                <label class="box movie">
+                                    <input type="checkbox" name="movies"/>
+                                    <span class="kind-movies">Thriler</span>
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="register-question" id="married">
+                            <h3>Are you married?</h3><div class="toolTip-info tooltip" data-tooltip="MyPage guarantees a secure place for families. Only parents will be able to register their children, create photo albums, plan family trips.">?</div>
+                            <label for="married-yes" value="t"><input type="radio" name="married" id="married-yes">Yes</label>
+                            <label for="married-no" value="f"><input type="radio" name="married" id="married-no">No</label>
+                        </fieldset>
+
+                        <fieldset class="register-question" id="children">
+                            <h3>Do you have children?</h3><div class="toolTip-info tooltip" data-tooltip="Your little ones are safe, because you’re in charge of their accounts.">?</div>
+                            <label for="children-yes"><input type="radio" name="children" id="children-yes" value="t">Yes</label>
+                            <label for="children-no"><input type="radio" name="children" id="children-no" value="f">No</label>
+
+                            <div class="answer children-yes" value="t">
+                                <h3>How old are your children?</h3>
+                                <label for="child-age-less"><input type="radio" class="child-age-val" id="child-age-less"/>Less then 8</label>
+                                <label for="child-age-between"><input type="radio" class="child-age-val" id="child-age-between"/>Between 8-13</label>
+                                <label for="child-age-over"><input type="radio" class="child-age-val" id="child-age-over"/>Over 13</label>
+                            </div>
+                        </fieldset>
+                    
+                        <fieldset>
+                            <h5>By signing up, you agree to the<a href="">Terms of Service</a>and<a>Privacy Policy</a>, including <a href="">Cookie Use</a>.</h5>
+                        </fieldset>
+                    </div>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<script src="js/register.js"></script>
+</body>
+</head>

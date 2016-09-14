@@ -1,0 +1,50 @@
+
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == "MobileS" {
+        @media (max-width: 320px) {
+            @content;
+        }
+    }
+    @if $breakpoint == "MobileM" {
+        @media (min-width: 321px)  {
+            @content;
+        }
+    }
+    @if $breakpoint == "MobileL" {
+        @media (min-width: 374px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == "Small" {
+        @media (min-width: 426px) {
+            @content;
+        }
+    }
+    @if $breakpoint == "Medium" {
+        @media (min-width: 640px) { /* (min-width:) and(max-width: 40em) */
+            @content;
+        }
+    }
+
+    @else if $breakpoint == "Large" { /* (min-width: 40.063em) and (max-width: 64em) */
+        @media (min-width: 769px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint == "XLarge" {
+        @media (min-width: 1025px) { /* (min-width: 64.063em) and (max-width: 90em) */
+            @content;
+        }
+    }
+
+    @else if $breakpoint == "XXLarge" { /* min-width: 90.063em and max-width: 120em */
+
+        @media (min-width 1441px) {
+            @content;
+        }
+    }
+
+
+}
