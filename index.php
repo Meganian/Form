@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="eng
+">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,15 +12,18 @@
 
     </head>
     <body>
+
 <div class="body-content">
     <div class="pages">
         <div id="first-page">
             <div class="register-info">
+                <div id="message"></div>
                 <h2>Welcome to MyPage</h2>
                 <ul>
-                    <li>I know that questionnaires are boring, but the answers you give will be directly connected to the options available on your profile. Why, you might ask? This is how we create combinations in various MyPage areas. We aim to give you the best quality possible and your answers will help us to make it happen.</li>
+                    <li>I know that questionnaires are boring, but the answers you give will be directly connected to the options available on your profile.</li>
                     <li>Your account will offer you loads of services, features and curiosities to explore you haven’t seen before in social media. Hold on to your seat, our city of stars waits right around the corner.</li>
                 </ul>
+                <div class="photo"></div>
             </div>
 
             <div class="register-header">
@@ -27,7 +31,7 @@
             </div>
 
             <div class="register-form">
-                <form method="post" id="reg" name="reg">
+                <form action="form.php" method="post" id="reg" name="reg">
                     <div id="first-step">
                         <fieldset class="name">
                             <input type="text" placeholder="First name" class="txt"  name="first_name"  id="first_name" pattern="[a-zA-Z0-9]+"  minlength=3 maxlength=15 autofocus="autofocus">
@@ -45,10 +49,7 @@
                                 <div class="controls">
                                     <select name="birth_day" id="birth_day" class="txt birth-day">
                                         <option value="">Day</option>
-                                        <option value="">---</option>
-                                        {for $day=1 to 31 step 1}
-                                            <option value="{$day}">{$day}</option>
-                                        {/for}
+                                                
                                     </select>
                                     <select name="birth_month" id="birth_month" class="txt birth-day">
                                         <option value="">Month</option>
@@ -68,10 +69,8 @@
                                     </select>
                                     <select name="birth_year" id="birth_year" class="txt birth-day">
                                         <option value="">Year</option>
-                                        <option value="">----</option>
-                                        {for $year=$current_year-14 to 1900 step -1}
-                                            <option value="{$year}">{$year}</option>
-                                        {/for}
+                                        
+                                        
                                     </select>
                                 </div>
                             </div>
@@ -219,6 +218,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 

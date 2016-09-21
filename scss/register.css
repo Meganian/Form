@@ -31,7 +31,7 @@
   content: attr(data-tooltip);
   bottom: 60px;
   position: absolute;
-  left: -211%;
+  left: 50%;
   font-size: 13px;
   text-align: center;
   display: inline-block;
@@ -47,9 +47,6 @@
   -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.34);
   -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.34);
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.34); }
-  @media (min-width: 426px) {
-    .tooltip::before {
-      left: 50%; } }
 
 .tooltip::after {
   width: 0;
@@ -155,23 +152,23 @@ input[type="submit"] {
   color: #2774ae;
   float: left;
   display: inline-block; }
-  @media (min-width: 1025px) {
+  @media (min-width: 640px) {
     .register-info {
-      /* (min-width: 64.063em) and (max-width: 90em) */
+      /* (min-width:) and(max-width: 40em) */
       width: 33%; } }
   .register-info .photo {
+    background: center url("../img/aloha2.jpg") no-repeat;
+    width: 275px;
+    height: 183px;
     /* min-width: 90.063em and max-width: 120em */ }
-    @media (min-width: 1025px) {
+    @media (min-width: 640px) {
       .register-info .photo {
-        /* (min-width: 64.063em) and (max-width: 90em) */
-        width: 235px;
-        height: 153px;
-        background: center url("../img/aloha2.jpg") no-repeat; } }
+        /* (min-width:) and(max-width: 40em) */
+        display: block;
+        position: fixed;
+        padding-top: 35px; } }
     @media (min-width 1441px) {
       .register-info .photo {
-        width: 275px;
-        height: 183px;
-        display: block;
         top: 45%;
         left: 20%; } }
   .register-info li {
@@ -183,27 +180,24 @@ input[type="submit"] {
   padding: 20px 0 40px;
   color: #2774ae;
   float: right; }
-  @media (min-width: 1025px) {
+  @media (min-width: 640px) {
     .register-header {
-      /* (min-width: 64.063em) and (max-width: 90em) */
+      /* (min-width:) and(max-width: 40em) */
       width: 33%;
       float: left; } }
 
 .register-form {
   clear: both;
   width: 100%;
+  padding: 0 0 0 50px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   display: inline-block; }
-  @media (min-width: 426px) {
+  @media (min-width: 640px) {
     .register-form {
-      padding: 0 0 0 50px; } }
-  @media (min-width: 1025px) {
-    .register-form {
-      /* (min-width: 64.063em) and (max-width: 90em) */
-      border-left: 1px solid #e6e6e6;
-      width: 58%; } }
+      /* (min-width:) and(max-width: 40em) */
+      border-left: 1px solid #e6e6e6; } }
   .register-form fieldset {
     border: 0; }
     .register-form fieldset h5 {

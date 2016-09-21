@@ -1,7 +1,7 @@
 @import "breakpoints.scss";
 @import "variables.scss";
 @import "mixins.scss";
-/*@import "text-shadow.scss";*/
+/*@import "text-shadow.scss";
 
 /*-------------------global-classes-----------------*/
 
@@ -39,7 +39,7 @@
     content: attr(data-tooltip);
     bottom:60px;
     position: absolute;
-    left:50%;
+    left: -211%;
     font-size:13px;
     text-align: center;
     display:inline-block;
@@ -55,6 +55,10 @@
     -webkit-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.34);
        -moz-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.34);
             box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.34);
+    @include respond-to(Small){
+        left: 50%;
+    }
+                
 }
 .tooltip::after {
     width: 0;
@@ -160,23 +164,29 @@ input[type="submit"] {
 }
 
 .register-info {
-    clear: right;
+    //clear: right;
     width: 100%;
     padding: 0 50px 0 0;
     color: $blueColor;
     float: left;
     display: inline-block;
-    @include respond-to(Medium){
+    @include respond-to(XLarge){
         width: 33% ;
     }
-    img {
-        display: none;
-        @include respond-to(Medium) {
-            display: block;
-            position: fixed;
-            padding-top: 35px;
+   // h2, ul {position: fixed;}
+    .photo {
+
+        @include respond-to(XLarge) {
+            width: 235px;
+        height: 153px;
+            background: center url('../img/aloha2.jpg') no-repeat;
         }
         @include respond-to(XXLarge) {
+
+        width: 275px;
+        height: 183px;
+            
+             display: block;
             top: 45%;
             left: 20%;
         }
@@ -192,20 +202,24 @@ input[type="submit"] {
     padding: 20px 0 40px;
     color: $blueColor;
     float:right;
-    @include respond-to(Medium){
+    @include respond-to(XLarge){
         width: 33%;
+        float: left;
     }
 }
 
 .register-form {
-    clear: left;
+    clear: both;
     width: 100%;
-    padding: 0 0 0 50px;
+    
     @include box-sizing(border-box);
     display: inline-block;
-    border-left: 1px solid #e6e6e6;
-    @include respond-to(Medium) {
-        width: 60%;
+    @include respond-to(Small){
+        padding: 0 0 0 50px;
+    }
+    @include respond-to(XLarge) {
+         border-left: 1px solid #e6e6e6;
+        width: 58%;
     }
     fieldset {
         border: 0;
@@ -221,7 +235,7 @@ input[type="submit"] {
         font-size: 14px;
         border-radius: 3px;
         border: 1px solid #ccc;
-        box-shadow: inset 0 1px 1px rgba(255,255,255, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
         transition: border-color ease-in-out 1.15s, box-shadow ease-in-out .15s;
         &:focus {
             border-color: $blueColor;
