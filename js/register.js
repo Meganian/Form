@@ -1,28 +1,33 @@
-$(document).ready(function () {
+$(function($){
+
+    var start = 1900;
+    var end = new Date().getFullYear();
+    var options = "";
+    for(var year = end ; year >=start; year--){
+      options += "<option>"+ year +"</option>";
+    }
+    $('#birth_year').append(options);
+
+    var opt = "";
+    for(var day = 1; day < 32; day++){
+        opt += '<option>'+ day +'</option>'
+    }
+    $('#birth_day').append(opt);
+
 
     /*----------------------------------------_clear_input_after_no_---------------------------------------*/
 
 
     var clearInputAfterNo  = function() {
 
-        var inputNo = $('input[value=f]');
+        var inputNo = $('input[value=f],input[value=no]');
 
         inputNo.on('change', function () {
             var toClear = $(this).parent().next().children('input');
             toClear.val('');
-        });
-
-        $('#pet-no').on('change',function(){
-            $('.pet-yes').find('span').removeClass('checked');
-        });
-        $('#movies-no').on('change',function(){
             $('.movies-yes').find('span').removeClass('checked');
-        });
-        $('#children-no').on('change',function(){
             $('.child-age-val').attr('checked',false);
         });
-
-
     };
 
     clearInputAfterNo();
@@ -34,7 +39,6 @@ $(document).ready(function () {
             $(this).siblings('span').addClass('checked');
         } else {
             $(this).siblings('span').removeClass('checked');
-
         }
     });
 
@@ -62,7 +66,7 @@ $(document).ready(function () {
 });
 
 /*-------------------------------------------------------------------------------*/
-/*
+
     var regForm = $('#reg'),
         regFormExpand = $('#register-expand');
 
@@ -92,40 +96,23 @@ $(document).ready(function () {
 
 
 
-
-
-
-   regForm.on('submit', function (e) {
-        $_this = $(this);
-        e.preventDefault();
-
-        $.post(
-            baseUrl + 'register/store',
-            $_this.serialize()
-        ).done(function(data){
-            window.location.href = baseUrl + 'main'
-        }).fail(function(jsonData) {
-            var errorsArr = jsonData.responseJSON.errors;
-            correctForm(errorsArr);
-        });
-
-        });
-
-    regFormExpand.on('click', function (e) {
-        var that = $(this)
-        $('#second-step', regForm).toggle(1000, function () {
-            if($(this).is(':visible')) {
-                that.text('Hide more')
-            } else {
-                that.text('More')
+$(function($){
+    $('#reg').submit(function(event){
+        alert('wywolano');
+        event.preventDefault();
+        correctForm();
+        var ajaxifiedForm = $(this);
+        $.ajax({
+            'url' : ajaxifiedForm.attr('action'),
+            'type' : 'post',
+            'dataType' : 'json',
+            'data' : ajaxifiedForm.serialize(),
+            'success' : function(response){
+                ajaxifiedForm.children('div.message').html(response.message).addClass(response.status);
             }
         });
-
-    })
-
+    });
 });
-
-
 
 var correctForm = function (inputs) {
 
@@ -157,7 +144,5 @@ var formClearErr = function () {
     $("#reg select").removeClass('err-form');
     //$("label").removeClass('err-form-radio');
     $("#reg .err-form-span").remove();
-    $("fieldset h3").css('color', '#2774ae')
+    $("fieldset h3").css('color', '#2774ae');
 };
-
-*/
